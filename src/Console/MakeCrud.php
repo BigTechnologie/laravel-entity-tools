@@ -1,6 +1,6 @@
 <?php
 
-namespace Kandia\Console;
+namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -43,7 +43,7 @@ class MakeCrud extends Command
 
         // Logique pour générer les fichiers du CRUD ici pour chaque entité
         // Par exemple, génération de contrôleurs, de routes, de vues, etc.
-        // Utilisez les outils de Laravel comme Artisan::call() pour générer des resources.
+        // Utilisons les outils de Laravel comme Artisan::call() pour générer des resources.
 
         $this->createController();
         $this->createViews();
@@ -58,21 +58,21 @@ class MakeCrud extends Command
         // Chemin vers le répertoire des modèles de votre application
         $modelsDirectory = app_path('Models');
 
-        // Vérifier si le répertoire des modèles existe
+        // Vérifions si le répertoire des modèles existe
         if (!File::exists($modelsDirectory) || !File::isDirectory($modelsDirectory)) {
             return [];
         }
 
-        // Lister tous les fichiers dans le répertoire des modèles
+        // Listons tous les fichiers dans le répertoire des modèles
         $modelFiles = File::files($modelsDirectory);
 
         $modelNames = [];
 
         foreach ($modelFiles as $file) {
-            // Récupérer le nom du fichier sans l'extension .php
+            // Récupérons le nom du fichier sans l'extension .php
             $modelName = pathinfo($file->getFilename(), PATHINFO_FILENAME);
 
-            // Ajouter le nom du modèle à la liste
+            // Ajoutons le nom du modèle à la liste
             $modelNames[] = $modelName;
         }
 
@@ -352,7 +352,7 @@ class MakeCrud extends Command
     {
         $this->generateBase();
         $directory = resource_path('views/' . Str::plural($this->entity));
-        // Vérifier si le dossier existe déjà
+        // Vérifions si le dossier existe déjà
         if (!File::isDirectory($directory)) {
             // Si le dossier n'existe pas, le créer avec les permissions
             File::makeDirectory($directory, 0755, true);
@@ -770,7 +770,7 @@ class MakeCrud extends Command
         $tbody .= "<tr>";
         $tbody .= "<td>{{ \${$this->entity}->id }}</td>";
         $fields = $this->getFields();
-        $lastField = end($fields); // Obtenez le dernier élément du tableau
+        $lastField = end($fields); // Obtenons le dernier élément du tableau
         foreach ($fields as $index => $field) {
             $isLast = ($field === $lastField);
             $tbody .= "\n\t\t\t\t\t\t\t";
@@ -832,7 +832,7 @@ class MakeCrud extends Command
         $tbody .= "@endforeach";
 
 
-        // Générer la vue Show avec un tableau Bootstrap et un entête dynamique
+        // Générons la vue Show avec un tableau Bootstrap et un entête dynamique
         $content = <<<EOD
                         @extends('admin')
 
@@ -1118,7 +1118,7 @@ class MakeCrud extends Command
         $routesFilePath = base_path('routes/web.php');
         $existingRoutes = file_get_contents($routesFilePath);
 
-        // Vérifiez si le contenu des routes existe déjà dans le fichier
+        // Vérifions si le contenu des routes existe déjà dans le fichier
         if (strpos($existingRoutes, $routeContent) === false) {
             File::append($routesFilePath, PHP_EOL . $routeContent);
             $this->info('Updated routes/web.php');
@@ -1205,7 +1205,7 @@ class MakeCrud extends Command
         HTML;
 
         if (!file_exists($baseFileName)) {
-            // Créer le fichier $baseFileName si nécessaire
+            // Créons le fichier $baseFileName si nécessaire
             file_put_contents($baseFileName, $content); // Utilisation de file_put_contents pour créer le fichier
             $this->info('Base view file created: ' . $baseFileName);
         }
@@ -1262,7 +1262,7 @@ class MakeCrud extends Command
                 $fieldData = explode(',', $match);
                 $fieldName = trim($fieldData[0], "'\"");
 
-                // Vérifier si le champ appartient au modèle App\Models
+                // Vérifions si le champ appartient au modèle App\Models
                 if (
                     strpos($fieldName, '\\App\\Models\\') === false &&
                     strpos($fieldName, '[') === false
