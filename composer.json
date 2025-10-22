@@ -1,6 +1,6 @@
 {
     "name": "bigtechnologie/laravel-entity-tools",
-    "description": "Package Laravel pour générer automatiquement des entités et des CRUD via Artisan.",
+    "description": "Package Laravel pour générer automatiquement des entités et des CRUD via Artisan. Utiliser la commande suivante dans votre terminal : composer require bigtechnologie/laravel-entity-tools:dev-main ",
     "keywords": [
         "laravel",
         "artisan",
