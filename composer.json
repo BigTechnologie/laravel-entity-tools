@@ -1,5 +1,5 @@
 {
-    "name": "bigtechnologie/laravel-entity-tools",
+    "name": "bigtechnologie/laravel-entity-tools-v2",
     "description": "Package Laravel pour générer automatiquement des entités et des CRUD via Artisan.",
     "keywords": ["laravel", "artisan", "entity", "crud", "generator", "codegen"],
     "homepage": "https://github.com/BigTechnologie/laravel-entity-tools",
