@@ -345,8 +345,14 @@ class MakeCrud extends Command // Utilisation du service Command de Laravel
         }
 
         if (!file_exists($formRequestPath)) {
-            file_put_contents($formRequestPath, $contentRequests);
+        // Crée le dossier s’il n’existe pas
+        if (!is_dir(dirname($formRequestPath))) {
+        mkdir(dirname($formRequestPath), 0755, true);
         }
+
+    file_put_contents($formRequestPath, $contentRequests);
+}
+
     }
     public function createViews()
     {
