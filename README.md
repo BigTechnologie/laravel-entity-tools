@@ -40,6 +40,8 @@ Cette commande va générer :
 
 Un contrôleur CRUD dans app/Http/Controllers
 
+L'ajout automatique du NomDeLEntitéFormRequest.php dans app/Http/Requests pour les contraintes de validation
+
 Les vues Blade (index, create, edit, show) dans resources/views/nom-de-l-entité
 
 L’ajout automatique de la route Route::resource() dans routes/web.php
@@ -48,11 +50,13 @@ L’ajout automatique de la route Route::resource() dans routes/web.php
 Après avoir utilisé le package, vous aurez une structure similaire à :
 
 app/
-└── Models/
-    └── NomDeLEntité.php
-app/
-└── Http/Controllers/
-    └── NomDeLEntitéController.php
+├── Models/
+│   └── NomDeLEntité.php
+├── Http/
+│   ├── Controllers/
+│   │   └── NomDeLEntitéController.php
+│   └── Requests/
+│       └── NomDeLEntitéFormRequest.php
 resources/
 └── views/
     └── nom-de-l-entité/
@@ -62,6 +66,7 @@ resources/
         └── show.blade.php
 routes/
 └── web.php
+
 
 ⚡ Remarques
 Le package nécessite PHP >= 8.1 et Laravel 10, 11 ou 12.
@@ -137,6 +142,8 @@ Cette commande génère automatiquement :
 
 Le contrôleur ProductController.php dans app/Http/Controllers
 
+ProductFormRequest.php dans app/Http/Requests
+
 Les vues Blade index, create, edit, show dans resources/views/products/
 
 L’ajout automatique de la route Route::resource('products', ProductController::class); dans routes/web.php
@@ -156,23 +163,23 @@ Route::resource('products', ProductController::class);
 🔍 Structure finale après génération
 
 app/
-└── Models/
-    └── Product.php
-app/
-└── Http/Controllers/
-    └── ProductController.php
+├── Models/
+│   └── NomDeLEntité.php
+├── Http/
+│   ├── Controllers/
+│   │   └── NomDeLEntitéController.php
+│   └── Requests/
+│       └── NomDeLEntitéFormRequest.php
 resources/
 └── views/
-    └── products/
+    └── nom-de-l-entité/
         ├── create.blade.php
         ├── edit.blade.php
         ├── index.blade.php
         └── show.blade.php
 routes/
 └── web.php
-database/
-└── migrations/
-    └── xxxx_xx_xx_create_products_table.php
+
 
 
 
