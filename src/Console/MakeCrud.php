@@ -1,6 +1,6 @@
 <?php
 
-namespace Kandia\Console;
+namespace Kandia\Console; 
 
 use Illuminate\Console\Command;
 
@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 
 
-class MakeCrud extends Command
+class MakeCrud extends Command // Utilisation du service Command de Laravel 
 {
     protected $entity = '';
     protected $entityNames = '';
